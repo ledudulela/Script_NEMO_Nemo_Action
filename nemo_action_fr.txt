@@ -1,0 +1,122 @@
+  [Nemo Action]
+   # MAJ: 2015-06-12
+   #############################################
+   #### DEBOGAGE (OPTIONNEL):
+   ####
+   #### Exécuter Nemo avec la variable
+   #### d'environnement NEMO_ACTION_VERBOSE
+   #### pour activer la journalisation et
+   #### déboguer plus facilement les actions
+   ####
+   #### i.e.
+   #### $ nemo --quit
+   #### $ NEMO_ACTION_VERBOSE=1 nemo
+   #############################################
+   
+   # Active   
+   # Activer ou désactiver l'action
+   # Optionnel - si omis, l'action est activée
+   Active=true
+   
+   # Arguments pouvant être utilisés dans le champ Name, Comment et Exec:
+   #
+   # %U - insère la liste des URI sélectionnnées
+   # %F - insère la liste des chemins de fichiers sélectionnés
+   # %P - insère le chemin du répertoire parent (en cours)
+   # %f or %N (déprécié) - insère le nom du premier fichier sélectionné
+   # %p - insère le nom du répertoire parent
+   # %D - insère le chemin du périphérique de stockage du fichier (i.e. /dev/sdb1)
+
+   # Name   
+   # Le nom à afficher dans le menu
+   # **** OBLIGATOIRE ****
+   Name=Action Personnalisée appliquée à %N
+
+   # Comment   
+   # Information apparaissant dans la barre d'état
+   Comment=Ceci est un test d'action Nemo. L'action sera appliquée à %N
+
+   # Exec   
+   # Ce qui doit être exécuté. Entourer de < > pour lancer un exécutable (script, programme)
+   # se trouvant dans le répertoire des fichiers.nemo_action
+   # **** OBLIGATOIRE ****
+   #Exec=gedit %F
+   Exec=<myaction.py -r -g %P %F %U>
+   
+   # Icon-Name
+   # Nom de l'icone à utiliser dans le menu - doit être un nom d'icone connu du thème
+   Icon-Name=folder
+   
+   # Stock-Id
+   # Gtk Stock ID à utiliser pour l'icone. Notez que si les deux options Icon-name et
+   # Stock-Id sont définis, l'option Stock-Id est prioritaire.
+   #Stock-Id=gtk-cdrom
+
+   # Selection   
+   # Le type de sélection: [s]ingle, [m]ultiple, any, notnone, none (clic sur l'arrière plan),
+   # ou un nombre de fichiers devant être sélectionnés pour que l'action soit affichée dans
+   # le menu contextuel.
+   # ****** OBLIGATOIRE *******
+   Selection=m
+
+   # Extensions   
+   # Les extensions (de fichiers) pour lesquelles l'action sera disponible dans le menu contextuel
+   # - le séparateur de valeurs est le point-virgule et doit se terminer par un point-virgule
+   # "dir" pour une sélection de répertoire
+   # "none" sans extension
+   # "nodirs" pour toute sélection n'incluant pas de répertoire
+   # "any" pour tout type de fichier, incluant les répertoires.
+   # Extensions spécifiques individuelles, peut être une liste de valeurs séparées par un point-virgule
+   # N'est pas sensible à la casse. jpg s'appliquera aux fichiers d'extension JPG, jPg, jpg, etc..
+   # **** OBLIGATOIRE si l'option MIMETYPES n'est pas définie *****
+   Extensions=any;
+
+   # Mimetypes   
+   # Les mime-types de fichiers pour lesquels l'action sera disponible dans le menu contextuel
+   # - le séparateur de valeurs est le point-virgule et doit se terminer par un point-virgule
+   # ****  OBLIGATOIRE si l'option EXTENSION n'est pas définie  *****
+   #Mimetypes=text/plain;
+
+   # Separator   
+   # Le séparateur à utiliser - ajoute une chaine de caractères entre les différents chemins ou URL
+   # dans la ligne de commande. Optionnel - Par défaut, un espace sera inséré.
+   # Notez que vous pouvez avoir ici des espaces de fin de chaine
+   #Separator=,
+
+   # Quote   
+   # Le type de Quote à utiliser - entoure les chemins/urls avec des quotes.
+   # Optionnel - par défaut, aucune quote.
+   # peut être: simple ('), double ("), accent grave (`)
+   #Quote=double
+
+   # Dependencies   
+   # Dépendances - programmes requis pour que l'action fonctionne. Nemo recherchera
+   # les programmes et n'affichera pas l'action s'ils sont manquants.
+   # Vous pouvez indiquer le nom de l'exécutable (s'il se trouve dans le $PATH)
+   # ou le chemin complet de l'exécutable (i.e. /usr/lib/gvfs/gvfsd-archive )
+   # - le séparateur de valeurs est le point-virgule et doit se terminer par un point-virgule
+   #Dependencies=gedit;
+   
+   # Conditions
+   # - le séparateur de valeurs est le point-virgule
+   # "desktop" le répertoire en cours (parent) est le bureau
+   # "removable" la cible (première sélection) is supprimable
+   # "gsettings <schema> <boolean key>" est vrai
+   # "gsettings <schema> <key> <key-type> <[eq|ne|gt|lt]> <value>"
+   # "dbus <name>" existe
+   #Conditions=desktop;
+
+   # EscapeSpaces   
+   # Echappe les espaces - définir à true (vrai) pour échapper les espaces dans les noms de fichiers
+   # et uris ($U, $F, $P, $D)
+   # Il est parfois préférable d'échapper les espaces dans les chemins de fichiers plutôt que d'entourer
+   # les chemins par des double-quotes.
+   # Optionnel - par défaut est à false (faux)
+   #EscapeSpaces=true
+
+   # Options locales (prioritaires):
+   # principe: option[langue]
+   # exemples:
+   # Name[fr]=nom de l'action en français
+   # Comment[fr]=information s'affichant en français dans la barre d'état 
+
