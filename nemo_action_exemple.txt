@@ -1,3 +1,15 @@
+# exemple : Editer le fichier avec Xed
+[Nemo Action]
+Active=true
+Name=Editer le fichier avec Xed
+Comment=Edite le fichier avec Xed
+Exec=xed %F
+Selection=s
+Extensions=any;
+Quote=double
+
+
+
 # exemple : Extraire l'archive sélectionnée vers un dossier...
 [Nemo Action]
 Active=true
